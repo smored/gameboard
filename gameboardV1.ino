@@ -165,6 +165,7 @@ void screenSetup() {
   display.clearDisplay();
 }
 
+// Starts the buzzer timer
 void buzzerStart(int freq) {
   buzzerTimerSetup(freq);
   // Start buzzer
@@ -173,15 +174,18 @@ void buzzerStart(int freq) {
   buzzer_on = true;
 }
 
+// Encoder button
 void buttonISR1() {
   buzzerStart(8000);
 }
 
+// SMD button
 void buttonISR2() {
   restartGame();
 }
 
 // BUZZER
+// flips the GPIO high and low according to the buzzer timer's set frequency to produce a specific sound
 bool b = false;
 void IRAM_ATTR Timer0_ISR() {
   noInterrupts();
